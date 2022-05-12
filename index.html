@@ -8,8 +8,45 @@
     <title>Document</title>
 </head>
 
+
 <body>
-    Hello World!
+    Hello world!
 </body>
+
+<script>
+    console.log("Hello world!");
+
+    // GET Request to get data from server
+    fetch("https://jsonplaceholder.typicode.com/todos/1")
+        .then(res => res.json())
+        .then(data => {
+            data.id += 1
+            console.log(data)
+        });
+
+    // POST Request to send data to server
+    fetch("https://jsonplaceholder.typicode.com/todos", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            title: "Test",
+            body: "This is a test",
+            userId: 1
+        })
+    }).then(
+        res => console.log(res.status)
+    );
+
+    // DELETE Request to delete data from server
+    fetch("https://jsonplaceholder.typicode.com/todos/1", {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+
+</script>
 
 </html>
